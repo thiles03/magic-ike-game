@@ -5,26 +5,23 @@ using UnityEngine;
 public class CharacterStats : MonoBehaviour
 {
     [Header("Stats")]
+    public float attackSpeed = 1f;
     [SerializeField]
     private int maxHealth = 100;
-    [SerializeField]
-    private float attackSpeed = 1f;
-
+    
     public int currentHealth { get; private set; }
     public float attackCooldown { get; private set; } = 0;
     public bool isDead { get; protected set; }  = false;
 
-    public StatBarController healthBar;
-
+    [SerializeField]
+    private StatBarController healthBar = null;
     private AnimationController animController;
-    private SoundController soundController;
 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetSliderMax(maxHealth);
         animController = GetComponent<AnimationController>();
-        soundController = GetComponent<SoundController>();
     }
 
     protected virtual void Update()
@@ -43,14 +40,23 @@ public class CharacterStats : MonoBehaviour
     public void TakeDamage (int damage)
     {
         currentHealth -= damage;
-        healthBar.SliderValue(currentHealth);
-        animController.HitAnimation();
-        //soundController.GetHit();
 
-        if (currentHealth <= 0)
+        if (damage > 0)
+        {
+
+            animController.HitAnimation();
+        }
+
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else if (currentHealth <= 0)
         {
             Die();
         }
+
+        healthBar.SliderValue(currentHealth);
     }
 
     protected virtual void Die()

@@ -5,25 +5,49 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    //Temporary. Sync animation.
     public float attackDelay;
 
+    //Reference player position and stats
     private Transform target;
-    private NavMeshAgent navAgent;
+    private PlayerStats targetStats;
+
+    //Own stats
     private EnemyStats myStats;
+
+    //Reference to own NavMeshAgent and AnimationController
+    private NavMeshAgent navAgent;
     private AnimationController animController;
 
     void Start()
     {
+        //Build references
         target = PlayerManager.instance.player.transform;
-        navAgent = GetComponent<NavMeshAgent>();
+        targetStats = target.GetComponent<PlayerStats>();
         myStats = GetComponent<EnemyStats>();
+        navAgent = GetComponent<NavMeshAgent>();
         animController = GetComponent<AnimationController>();
+
+        //Start movement
+        StartCoroutine(ActivateEnemy());
     }
 
     void Update()
     {
-        if(myStats.isDead == false && target.GetComponent<PlayerStats>().isDead == false)
+        //If enemy or player dies, stop movement
+        if (myStats.isDead || targetStats.isDead)
         {
+            DeactivateEnemy();
+        }
+    }
+
+    IEnumerator ActivateEnemy()
+    {
+        //If enemy and player are alive, move to player and attack
+        while (!myStats.isDead && !targetStats.isDead)
+        {
+            yield return null; 
+
             float distance = Vector3.Distance(target.position, transform.position);
             navAgent.SetDestination(target.position);
             animController.MoveAnimationStart();
@@ -31,17 +55,9 @@ public class EnemyController : MonoBehaviour
             if (distance <= navAgent.stoppingDistance)
             {
                 animController.MoveAnimationStop();
-                Attack(Random.Range(myStats.minAttackDamage, myStats.maxAttackDamage));
                 FaceTarget();
+                Attack(Random.Range(myStats.minAttackDamage, myStats.maxAttackDamage));
             }
-        }
-
-        if (myStats.isDead || target.GetComponent<PlayerStats>().isDead == true)
-        {
-            animController.MoveAnimationStop();
-            navAgent.ResetPath();
-            navAgent.velocity = Vector3.zero;
-            GetComponent<Collider>().enabled = false;
         }
     }
 
@@ -62,10 +78,19 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    void DeactivateEnemy()
+    {
+        animController.MoveAnimationStop();
+        navAgent.ResetPath();
+        navAgent.velocity = Vector3.zero;
+        GetComponent<Collider>().enabled = false;
+    }
+
+    //Temp, sync animation
     IEnumerator DoDamage (int damage, float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        target.GetComponent<PlayerStats>().TakeDamage(damage);
+        targetStats.TakeDamage(damage);
     }
 }

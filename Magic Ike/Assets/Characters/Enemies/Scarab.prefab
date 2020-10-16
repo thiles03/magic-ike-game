@@ -240,10 +240,10 @@ Rigidbody:
   m_GameObject: {fileID: 4409821642963470881}
   serializedVersion: 2
   m_Mass: 40
-  m_Drag: 20
-  m_AngularDrag: 0
+  m_Drag: 10000
+  m_AngularDrag: 10000
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -377,8 +377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e096e2d215595314da1a7a79c97eebb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepVolume: 0
-  attackVolume: 0
 --- !u!114 &8597481966020720664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,6 +393,10 @@ MonoBehaviour:
   attackSound: {fileID: 0}
   hitSound: {fileID: 0}
   deadSound: {fileID: 0}
+  footstepVolume: 1
+  attackVolume: 1
+  hitVolume: 1
+  dieVolume: 1
 --- !u!114 &7400327530604433390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,11 +422,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f02df9a778ad84893f47bb0341df9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
   attackSpeed: 2
+  maxHealth: 20
   healthBar: {fileID: 3529221547389975287}
   maxAttackDamage: 10
   minAttackDamage: 5
+  dropRate: 35
   score: 5
 --- !u!1 &4834380027037299850
 GameObject:

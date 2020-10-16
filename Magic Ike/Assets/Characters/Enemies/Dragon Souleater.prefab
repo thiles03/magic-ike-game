@@ -352,10 +352,10 @@ Rigidbody:
   m_GameObject: {fileID: 7303354652892646303}
   serializedVersion: 2
   m_Mass: 500
-  m_Drag: 50
-  m_AngularDrag: 0.05
+  m_Drag: 10000
+  m_AngularDrag: 10000
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -465,10 +465,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.3
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 7
+  m_Acceleration: 20
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 150
   m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -489,8 +489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e096e2d215595314da1a7a79c97eebb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepVolume: 0
-  attackVolume: 0
 --- !u!114 &-4281812362194460734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,6 +505,10 @@ MonoBehaviour:
   attackSound: {fileID: 0}
   hitSound: {fileID: 0}
   deadSound: {fileID: 0}
+  footstepVolume: 1
+  attackVolume: 1
+  hitVolume: 1
+  dieVolume: 1
 --- !u!114 &7297424619492618927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,12 +534,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f02df9a778ad84893f47bb0341df9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  attackSpeed: 1
+  attackSpeed: 1.2
+  maxHealth: 130
   healthBar: {fileID: 3671211038891876559}
-  maxAttackDamage: 1
-  minAttackDamage: 1
-  score: 1
+  maxAttackDamage: 30
+  minAttackDamage: 20
+  dropRate: 50
+  score: 20
 --- !u!1 &8319055230997099112
 GameObject:
   m_ObjectHideFlags: 0

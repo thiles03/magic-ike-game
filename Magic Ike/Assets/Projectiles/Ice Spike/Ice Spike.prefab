@@ -47,7 +47,7 @@ CapsuleCollider:
   m_Radius: 0.3
   m_Height: 2
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 1.4}
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!54 &390778393172536498
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -76,10 +76,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b33ee7e32771346a8474496f2b0e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  manaCost: 1
+  speed: 60
   timeToLive: 5
-  damage: 10
-  manaCost: 10
+  damage: 30
   impactEffect: {fileID: 5524387539396428023, guid: a5f73aada0c1b564aa2725001dd37aaa, type: 3}
   castEffect: {fileID: 5447350931858531007, guid: 8e94e19368bc96645bfe35bc28159981, type: 3}
 --- !u!1 &2667651682743133054
@@ -5065,7 +5065,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 60
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5181,7 +5181,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
+      scalar: 2
       minScalar: 3
       maxCurve:
         serializedVersion: 2
@@ -5234,8 +5234,8 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
-      minScalar: 1.5
+      scalar: 4
+      minScalar: 6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9936,8 +9936,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: 2
+      scalar: 50
+      minScalar: 30
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10428,7 +10428,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 30
+    angle: 14.53
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -11579,7 +11579,7 @@ ParticleSystem:
     orbitalZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6
+      scalar: 3
       minScalar: 0
       maxCurve:
         serializedVersion: 2

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
+    //Reference the object's Animator and Sound  Controller
     private Animator characterAnimator;
     private SoundController soundController;
+
     private bool footstepSounds = false;
 
     void Start()
@@ -14,6 +16,7 @@ public class AnimationController : MonoBehaviour
         soundController = GetComponent<SoundController>();
     }
 
+    //Walk
     public void MoveAnimationStart()
     {
         characterAnimator.SetBool("isMoving", true);
@@ -24,6 +27,8 @@ public class AnimationController : MonoBehaviour
     public void MoveAnimationStop()
     {
         characterAnimator.SetBool("isMoving", false);
+
+        //Check if footsteps are playing and stop
         if (footstepSounds)
         {
             soundController.StopSounds();
@@ -31,18 +36,21 @@ public class AnimationController : MonoBehaviour
         }
     }
 
+    //Attack
     public void AttackAnimation()
     {
         characterAnimator.SetTrigger("attack01");
         soundController.Attack();
     }
 
+    //Hit
     public void HitAnimation()
     {
         characterAnimator.SetTrigger("hit");
         soundController.GetHit();
     }
 
+    //Die
     public void DieAnimation()
     {
         characterAnimator.SetBool("isDead", true);

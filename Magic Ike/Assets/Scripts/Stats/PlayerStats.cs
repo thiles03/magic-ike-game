@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
+    public float manaRegen = 10;
+
     [SerializeField]
     private int maxMana = 100;
+    [SerializeField]
+    private StatBarController manaBar = null;
 
-    public float manaRegen { get; private set; } = 10;
     public float currentMana { get; private set; }
-
-    public StatBarController manaBar;
 
     private void Awake()
     {
