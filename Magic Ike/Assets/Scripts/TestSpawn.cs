@@ -61,11 +61,6 @@ public class TestSpawn : MonoBehaviour
             powerUpManager.SpawnPowerUp(6, new Vector3(-30, 0, -140));
         }
 
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            PlayerManager.instance.player.GetComponent<PlayerStats>().TakeDamage(20);
-        }
-
         if (Input.GetKeyDown(KeyCode.T))
         {
             SpawnEnemy();
