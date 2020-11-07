@@ -1,4 +1,11 @@
-# magic-ike-game
-Unity 3D project - top down shooter.
+# Magic Ike
 
-Combination of C#, VFX graphs and Photoshop assets.
+### General Info
+Top down shooter
+
+### Technologies
+Created with:
+* Unity 3D
+* Photoshop
+* Visual Studio
+* VFX Graphs
